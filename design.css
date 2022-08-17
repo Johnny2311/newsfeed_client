@@ -1,0 +1,67 @@
+html {
+    font-family: 'Kanit', sans-serif;
+}
+header {
+    background: #333333;
+    color: white;
+}
+
+span {
+    color: grey;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    height: 200px;
+}
+
+.title {
+    font-size: 60px;
+    margin: 0;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: larger;
+}
+
+.header-title {
+    margin-left: 40px;
+}
+
+.main {
+    border: 1px solid black;
+}
+
+.article-list {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.article-list div:first-child {
+    border: 0;
+}
+
+.article-row {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-top: 1px solid darkgrey;
+    border-collapse: collapse;
+}
+
+.article-row:hover .trash-icon.fa.fa-trash-o {
+    display: inline-block;
+}
+
+.article-title {
+    flex-basis: 80%;
+}
+
+.trash-icon.fa.fa-trash-o {
+    font-size: 25px;
+    display: none;
+}
+

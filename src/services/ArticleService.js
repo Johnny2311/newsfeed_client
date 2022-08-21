@@ -7,7 +7,7 @@ export const getArticles = () => {
 };
 
 export const deleteArticle = articleId => {
-    return fetch(`${BACKEND}/article/${articleId}`)
+    return fetch(`${BACKEND}/article/${articleId}`, { method: 'DELETE' })
         .then(response => response.json())
         .catch(error => console.log(error))
 };

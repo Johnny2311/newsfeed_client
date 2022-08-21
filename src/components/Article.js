@@ -1,12 +1,12 @@
 
 function Article(props) {
     return (
-        <div className="article-row">
+        <div className="article-row" onClick={props.onClick}>
             <p className="article-title">{props.title} <span className="article-author">- {props.author} -</span>
             </p>
             <p className="article-time">{formatDate(props.created_at)}</p>
             <figure className="trash-figure">
-                <i className='trash-icon fa fa-trash-o'></i>
+                <i onClick={props.onDeleteClick} className='trash-icon fa fa-trash-o'></i>
             </figure>
         </div>
     );

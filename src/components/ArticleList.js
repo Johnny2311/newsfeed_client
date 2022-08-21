@@ -1,6 +1,6 @@
 import React from 'react';
 import Article from "./Article";
-import { getArticles } from "../services/ArticleService";
+import { getArticles, deleteArticle } from "../services/ArticleService";
 
 class ArticleList extends React.Component {
     constructor(props) {
@@ -9,6 +9,9 @@ class ArticleList extends React.Component {
             isFetching: false,
             articles: []
         }
+
+        this.handleClick = this.handleClick.bind(this);
+        this.handleDeleteClick = this.handleDeleteClick.bind(this);
     }
 
     componentDidMount() {
@@ -26,13 +29,32 @@ class ArticleList extends React.Component {
         });
     }
 
+    handleClick(url) {
+        window.open(url, "_blank");
+    }
+
+    async handleDeleteClick(id, e) {
+        e.stopPropagation();
+        if (window.confirm("Seguro que quieres eliminar este artículo?")) {
+            await deleteArticle(id);
+            await this.fetchArticles();
+        }
+    }
+
     render() {
         const { articles } = this.state;
         return (
             <div className="main">
                 <div className="article-list">
                     {articles && articles.map((article, index) => (
-                        <Article key={index} title={article.title} author={article.author} created_at={article.created_at} />
+                        <Article
+                            key={index}
+                            onClick={this.handleClick.bind(this, article.url)}
+                            onDeleteClick={this.handleDeleteClick.bind(this, article._id)}
+                            title={article.title}
+                            author={article.author}
+                            created_at={article.created_at}
+                        />
                     ))}
                 </div>
             </div>

@@ -1,7 +1,7 @@
 const BACKEND = 'http://localhost:8080';
 
-export const getArticles = () => {
-    return fetch(`${BACKEND}/article/`)
+export const getArticles = (page=1, perPage=10) => {
+    return fetch(`${BACKEND}/article/?page=${page}&size${perPage}`)
         .then(response => response.json())
         .catch(error => console.log(error))
 };
